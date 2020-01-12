@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+	<p>
+		Многа букав!
+		Не хочется букавы читать. Картинки лучше глядеть. Какие букавы, на кой это надо - читать букавы? Их много, букав.
+	</p>
+	<p id="dialog-content"></p>
+	<button id="contact-button" class="btn btn-outline-primary">Contact us</button>
+</div>
+
+@section Scripts {
+	<script type="text/javascript">
+		$(function () {
+			$("#contact-button").click(function (e) {
+				e.preventDefault();
+
+				$.get("home/contactform", function (data) {
+					$("#dialog-content").html(data);
+				});
+			});
+		});
+
+		$(".close").click(function (e) {
+			e.preventDefault();
+
+			$("#dialog-content").html('');
+		});
+	</script>
+}
